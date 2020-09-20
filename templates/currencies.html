@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+    <h1>Currency Table</h1>
+
+    {% if ccy != None: %}
+        <h2>Currency {{ ccy }} </h2>
+    {% endif %}
+
+    <form method="get">
+        <label for="ccy-input-field">Currency: </label>
+        <input type="text" name="ccy" id="ccy-input-field"  {% if ccy != None: %}value="{{ ccy }}"{% endif %}/>
+        <input type="submit" value="Enter"/>
+    </form>
+
+
+    {% if ccy != None: %}
+    <div class="row">
+        <div class="eight columns">
+            <table class="u-full-width">
+                <thead>
+                    <tr>
+                        <th>EUR</th>
+                        <th>{{ ccy }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if value_map != None: %}
+                        {% for value in value_map %}
+                            <tr>
+                                <td>{{ value }}</td>
+                                <td>{{ value_map.get(value) }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

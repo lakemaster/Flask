@@ -1,0 +1,15 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+    <h1>Ich bin die Testseite</h1>
+
+    {% if name != None: %}
+        <h2>Hallo {{ name }} </h2>
+    {% endif %}
+
+    <form method="get">
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name"  {% if name != None: %}value="{{ name }}"{% endif %}/>
+        <input type="submit" value="Formular abschicken!"/>
+    </form>
+{% endblock %}
